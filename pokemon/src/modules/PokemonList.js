@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import PokemonClass from "./PokemonClass";
 
 export class PokemonList extends Component {
   render() {
-    return this.props.pokemons.map((pokemon) => (
+    return this.props.pokemons.map((pokemonList) => (
       <div>
-        <h3>{pokemon.name}</h3>
-        <img src={pokemon.url} alt={pokemon.name + " picture"}></img>
+        <PokemonClass key={pokemonList.name} pokemonList={pokemonList} />
       </div>
     ));
   }
