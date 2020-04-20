@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Router } from "react-router-dom";
 import "./App.css";
 import PokemonList from "./modules/PokemonList";
 import axios from "axios";
 import TypeList from "./modules/TypeList";
+import NavBar from "./modules/NavBar";
 
 class App extends Component {
   state = {
@@ -22,10 +24,29 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <PokemonList pokemons={this.state.pokemondata} />
-        <TypeList types={this.state.typedata} />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <React.Fragment>
+                <PokemonList pokemons={this.state.pokemondata} />
+              </React.Fragment>
+            )}
+          />
+          <Route
+            path="/types"
+            render={(props) => (
+              <TypeList
+                key={this.state.typedata.name}
+                types={this.state.typedata}
+              />
+            )}
+          />
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -18,7 +18,6 @@ export class PokemonClass extends Component {
   }
 
   render() {
-    console.log(this.state.img);
     return (
       <div>
         <p>{this.state.name}</p>

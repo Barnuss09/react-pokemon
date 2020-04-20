@@ -5,9 +5,9 @@ import axios from "axios";
 export class PokemonList extends Component {
   render() {
     return this.props.pokemons.map((pokemonList) => (
-      <div>
+      <React.Fragment>
         <PokemonClass key={pokemonList.name} pokemonList={pokemonList.url} />
-      </div>
+      </React.Fragment>
     ));
   }
 }
