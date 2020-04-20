@@ -3,8 +3,6 @@ import "./App.css";
 import PokemonList from "./modules/PokemonList";
 import axios from "axios";
 import TypeList from "./modules/TypeList";
-import Pokemon from "./modules/Pokemon";
-import PokemonClass from "./modules/PokemonClass";
 
 class App extends Component {
   state = {
