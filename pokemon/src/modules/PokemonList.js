@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PokemonClass from "./PokemonClass";
-import axios from "axios";
 
 export class PokemonList extends Component {
   render() {

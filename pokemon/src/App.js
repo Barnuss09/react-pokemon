@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Router } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import PokemonList from "./modules/PokemonList";
 import axios from "axios";
 import TypeList from "./modules/TypeList";
 import NavBar from "./modules/NavBar";
+import PokemonDetails from "./modules/PokemonDetails";
 
 class App extends Component {
   state = {
@@ -45,6 +46,7 @@ class App extends Component {
               />
             )}
           />
+          <Route path="/pokemon/:name" component={PokemonDetails} />
         </div>
       </BrowserRouter>
     );

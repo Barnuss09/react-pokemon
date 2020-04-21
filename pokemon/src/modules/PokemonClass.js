@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export class PokemonClass extends Component {
   state = {
     name: String,
     img: String,
+    id: String,
   };
 
   componentDidMount() {
@@ -13,6 +15,7 @@ export class PokemonClass extends Component {
       this.setState({
         name: res.data.name,
         img: res.data.sprites.front_default,
+        id: res.data.id,
       })
     );
   }
@@ -20,7 +23,7 @@ export class PokemonClass extends Component {
   render() {
     return (
       <div>
-        <p>{this.state.name}</p>
+        <Link to={`/pokemon/${this.state.id}`}>{this.state.name}</Link>
         <img src={this.state.img} alt="" />
       </div>
     );
