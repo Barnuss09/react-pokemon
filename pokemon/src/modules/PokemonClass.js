@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Background from "./Background";
 
-const Background = styled.div`
-  background: #ffec59;
-  color: black;
-`;
-const StyledLink = styled.span`
+const StyledLink = styled.a`
   color: black;
   padding: 0px;
+  text-decoration: none;
+  &:hover {
+    color: red;
+  }
 `;
 
 const PokemonClass = (props) => {
