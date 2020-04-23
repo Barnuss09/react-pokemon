@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Background = styled.div`
+  background: #ffec59;
+  color: black;
+`;
+const StyledLink = styled.span`
+  color: black;
+  padding: 0px;
+`;
 
 const PokemonClass = (props) => {
   const [state, setState] = useState({});
@@ -17,8 +27,12 @@ const PokemonClass = (props) => {
 
   return (
     <div>
-      <Link to={`/pokemon/${state.id}`}>{state.name}</Link>
-      <img src={state.img} alt="" />
+      <Background>
+        <Link to={`/pokemon/${state.id}`}>
+          <StyledLink>{state.name}</StyledLink>
+        </Link>
+        <img src={state.img} alt="" />
+      </Background>
     </div>
   );
 };

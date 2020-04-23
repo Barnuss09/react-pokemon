@@ -33,7 +33,10 @@ class App extends Component {
             path="/"
             render={(props) => (
               <React.Fragment>
-                <PokemonList pokemons={this.state.pokemondata} />
+                <PokemonList
+                  key={this.state.pokemondata.name}
+                  pokemons={this.state.pokemondata}
+                />
               </React.Fragment>
             )}
           />

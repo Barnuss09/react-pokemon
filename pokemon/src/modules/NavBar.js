@@ -1,13 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Header = styled.header`
+  font-size: 20;
+  background: yellow;
+  padding: 10px;
+`;
 
 export default function NavBar() {
   return (
     <div>
-      <header>
-        <h1>Pokemon App</h1>
-        <Link to="/">Pokemons</Link> | <Link to="/types">Types</Link>
-      </header>
+      <Header>
+        <h1> Pokemon App </h1> <Link to="/"> Pokemons </Link> |
+        <Link to="/types">Types</Link>
+      </Header>
     </div>
   );
 }
