@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Background from "./Background";
 
 const PokemonDetails = (props) => {
   const [state, setState] = useState({});
@@ -19,13 +20,15 @@ const PokemonDetails = (props) => {
 
   return (
     <div>
-      <img src={state.img} alt="" />
-      <ul>
-        <li>Name: {state.name}</li>
-        <li>Id: {state.id}</li>
-        <li>Height: {state.height}</li>
-        <li>Weight: {state.weight}</li>
-      </ul>
+      <Background>
+        <img src={state.img} alt="" />
+        <ul>
+          <li>Name: {state.name}</li>
+          <li>Id: {state.id}</li>
+          <li>Height: {state.height}</li>
+          <li>Weight: {state.weight}</li>
+        </ul>
+      </Background>
     </div>
   );
 };

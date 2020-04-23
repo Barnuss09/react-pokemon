@@ -2,5 +2,5 @@ import styled from "styled-components";
 
 export default styled.div`
   background: #ffec59;
-  padding: 0px;
+  padding: 10px;
 `;

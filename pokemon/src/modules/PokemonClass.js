@@ -3,14 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Background from "./Background";
+import StyledLink from "./StyledLink";
 
-const StyledLink = styled.a`
-  color: black;
-  padding: 0px;
-  text-decoration: none;
-  &:hover {
-    color: red;
-  }
+const Card = styled.div`
+  padding: 2px 16px;
+  background: yellow;
 `;
 
 const PokemonClass = (props) => {
@@ -29,10 +26,14 @@ const PokemonClass = (props) => {
   return (
     <div>
       <Background>
-        <Link to={`/pokemon/${state.id}`}>
-          <StyledLink>{state.name}</StyledLink>
-        </Link>
-        <img src={state.img} alt="" />
+        <Card>
+          <div>
+            <Link to={`/pokemon/${state.id}`}>
+              <StyledLink>{state.name}</StyledLink>
+            </Link>
+            <img src={state.img} alt="" />
+          </div>
+        </Card>
       </Background>
     </div>
   );

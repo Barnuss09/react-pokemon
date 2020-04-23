@@ -6,6 +6,7 @@ import axios from "axios";
 import TypeList from "./modules/TypeList";
 import NavBar from "./modules/NavBar";
 import PokemonDetails from "./modules/PokemonDetails";
+import Background from "./modules/Background";
 
 class App extends Component {
   state = {
@@ -28,28 +29,30 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <NavBar />
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <React.Fragment>
-                <PokemonList
-                  key={this.state.pokemondata.name}
-                  pokemons={this.state.pokemondata}
+          <Background>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <React.Fragment>
+                  <PokemonList
+                    key={this.state.pokemondata.name}
+                    pokemons={this.state.pokemondata}
+                  />
+                </React.Fragment>
+              )}
+            />
+            <Route
+              path="/types"
+              render={(props) => (
+                <TypeList
+                  key={this.state.typedata.name}
+                  types={this.state.typedata}
                 />
-              </React.Fragment>
-            )}
-          />
-          <Route
-            path="/types"
-            render={(props) => (
-              <TypeList
-                key={this.state.typedata.name}
-                types={this.state.typedata}
-              />
-            )}
-          />
-          <Route path="/pokemon/:name" component={PokemonDetails} />
+              )}
+            />
+            <Route path="/pokemon/:name" component={PokemonDetails} />
+          </Background>
         </div>
       </BrowserRouter>
     );
