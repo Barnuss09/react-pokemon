@@ -6,8 +6,10 @@ import Background from "./Background";
 import StyledLink from "./StyledLink";
 
 const Card = styled.div`
-  padding: 2px 16px;
+  padding: 2px 5px;
   background: yellow;
+  border: 1px solid black;
+  width: auto;
 `;
 
 const PokemonClass = (props) => {

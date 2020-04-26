@@ -3,9 +3,15 @@ import PokemonClass from "./PokemonClass";
 import styled from "styled-components";
 
 const Grid = styled.div`
+  background: #ffec59;
+  position: relative;
+  max-width: 90%;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-rows: minmax(50px, auto);
+  grid-auto-flow: dense;
   grid-gap: 10px;
-  grid-template-columns: 30% 30% 30%;
+  margin: 5%px;
 `;
 
 const PokemonList = (props) => {

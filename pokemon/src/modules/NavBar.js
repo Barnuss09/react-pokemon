@@ -8,6 +8,7 @@ const Header = styled.header`
   background: yellow;
   border-bottom: 5px solid black;
   padding: 10px;
+  width: 100%;
 `;
 
 export default function NavBar() {
