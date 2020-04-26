@@ -3,7 +3,7 @@ import PokemonClass from "./PokemonClass";
 import styled from "styled-components";
 
 const Grid = styled.div`
-  background: #ffec59;
+  background: ${(props) => props.theme.background};
   position: relative;
   max-width: 90%;
   display: grid;

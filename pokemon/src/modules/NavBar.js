@@ -5,7 +5,7 @@ import StyledLink from "./StyledLink";
 
 const Header = styled.header`
   font-size: 20;
-  background: yellow;
+  background: ${(props) => props.theme.cardBackground};
   border-bottom: 5px solid black;
   padding: 10px;
   width: 100%;

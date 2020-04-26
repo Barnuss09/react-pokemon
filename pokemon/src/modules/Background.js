@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default styled.div`
-  background: #ffec59;
+  background: ${(props) => props.theme.background};
   padding: 10px;
   width: 100%;
   height: 100%;

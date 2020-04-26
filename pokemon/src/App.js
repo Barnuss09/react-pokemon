@@ -7,6 +7,17 @@ import TypeList from "./modules/TypeList";
 import NavBar from "./modules/NavBar";
 import PokemonDetails from "./modules/PokemonDetails";
 import Background from "./modules/Background";
+import { ThemeProvider } from "styled-components";
+
+const defaultTheme = {
+  background: "#ffec59",
+  cardBackground: "yellow",
+};
+
+const blackandwhiteTheme = {
+  background: "LightGray",
+  cardBackground: "grey",
+};
 
 class App extends Component {
   state = {
@@ -26,35 +37,37 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <NavBar />
-          <Background>
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <React.Fragment>
-                  <PokemonList
-                    key={this.state.pokemondata.name}
-                    pokemons={this.state.pokemondata}
+      <ThemeProvider theme={blackandwhiteTheme}>
+        <BrowserRouter>
+          <div className="App">
+            <NavBar />
+            <Background>
+              <Route
+                exact
+                path="/"
+                render={(props) => (
+                  <React.Fragment>
+                    <PokemonList
+                      key={this.state.pokemondata.name}
+                      pokemons={this.state.pokemondata}
+                    />
+                  </React.Fragment>
+                )}
+              />
+              <Route
+                path="/types"
+                render={(props) => (
+                  <TypeList
+                    key={this.state.typedata.name}
+                    types={this.state.typedata}
                   />
-                </React.Fragment>
-              )}
-            />
-            <Route
-              path="/types"
-              render={(props) => (
-                <TypeList
-                  key={this.state.typedata.name}
-                  types={this.state.typedata}
-                />
-              )}
-            />
-            <Route path="/pokemon/:name" component={PokemonDetails} />
-          </Background>
-        </div>
-      </BrowserRouter>
+                )}
+              />
+              <Route path="/pokemon/:name" component={PokemonDetails} />
+            </Background>
+          </div>
+        </BrowserRouter>
+      </ThemeProvider>
     );
   }
 }
