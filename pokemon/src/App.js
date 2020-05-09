@@ -24,6 +24,7 @@ const App = () => {
   const [typedata, setTypedata] = useState([]);
   const [loadPokemon, setLoadPokemon] = useState(false);
   const [loadType, setLoadType] = useState(false);
+  const [currentTheme, setTheme] = useState(defaultTheme);
 
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
@@ -37,12 +38,31 @@ const App = () => {
     });
   }, []);
 
+  console.log(currentTheme);
+
   if (loadPokemon && loadType) {
     return (
-      <ThemeProvider theme={blackandwhiteTheme}>
+      <ThemeProvider theme={currentTheme}>
         <BrowserRouter>
           <div className="App">
             <NavBar />
+            <button
+              onClick={(e) =>
+                setTheme(
+                  currentTheme === defaultTheme
+                    ? {
+                        background: blackandwhiteTheme.background,
+                        cardBackground: blackandwhiteTheme.cardBackground,
+                      }
+                    : {
+                        background: defaultTheme.background,
+                        cardBackground: defaultTheme.cardBackground,
+                      }
+                )
+              }
+            >
+              Toggle theme
+            </button>
             <Background>
               <Route
                 exact
