@@ -49,7 +49,7 @@ const App = () => {
             <button
               onClick={(e) =>
                 setTheme(
-                  currentTheme === defaultTheme
+                  currentTheme.background === defaultTheme.background
                     ? {
                         background: blackandwhiteTheme.background,
                         cardBackground: blackandwhiteTheme.cardBackground,
