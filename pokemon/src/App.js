@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import PokemonList from "./modules/PokemonList";
@@ -19,23 +19,25 @@ const blackandwhiteTheme = {
   cardBackground: "grey",
 };
 
-class App extends Component {
-  state = {
-    pokemondata: [],
-    typedata: [],
-  };
+const App = () => {
+  const [pokemondata, setPokemondata] = useState([]);
+  const [typedata, setTypedata] = useState([]);
+  const [loadPokemon, setLoadPokemon] = useState(false);
+  const [loadType, setLoadType] = useState(false);
 
-  componentDidMount() {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon")
-      .then((res) => this.setState({ pokemondata: res.data.results }));
+  useEffect(() => {
+    axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
+      setPokemondata(res.data.results);
+      setLoadPokemon(true);
+    });
 
-    axios
-      .get("https://pokeapi.co/api/v2/type")
-      .then((res) => this.setState({ typedata: res.data.results }));
-  }
+    axios.get("https://pokeapi.co/api/v2/type").then((res) => {
+      setTypedata(res.data.results);
+      setLoadType(true);
+    });
+  }, []);
 
-  render() {
+  if (loadPokemon && loadType) {
     return (
       <ThemeProvider theme={blackandwhiteTheme}>
         <BrowserRouter>
@@ -48,8 +50,8 @@ class App extends Component {
                 render={(props) => (
                   <React.Fragment>
                     <PokemonList
-                      key={this.state.pokemondata.name}
-                      pokemons={this.state.pokemondata}
+                      key={pokemondata.name}
+                      pokemons={pokemondata}
                     />
                   </React.Fragment>
                 )}
@@ -57,10 +59,7 @@ class App extends Component {
               <Route
                 path="/types"
                 render={(props) => (
-                  <TypeList
-                    key={this.state.typedata.name}
-                    types={this.state.typedata}
-                  />
+                  <TypeList key={typedata.name} types={typedata} />
                 )}
               />
               <Route path="/pokemon/:name" component={PokemonDetails} />
@@ -69,7 +68,9 @@ class App extends Component {
         </BrowserRouter>
       </ThemeProvider>
     );
+  } else {
+    return "Loading..";
   }
-}
+};
 
 export default App;
